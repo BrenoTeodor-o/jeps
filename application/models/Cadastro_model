@@ -1,0 +1,23 @@
+<?php
+
+class Cadastro_model extends CI_Model
+{
+    function insert($Instituicao, $data) {
+        //die(print_r($data));
+        $this->db->insert($Instituicao, $data);
+        return $this->db->insert_id();
+    }
+
+    function retrieve($Instituicao, $cpf = null) {
+        if ($cnpj == null){
+            $query = $this->db->get($Instituicao);
+        } else {
+            $query = $this->db->where($cnpj);
+            $query = $this->db->get($Instituicao);
+        }
+            return $query->result();
+    }
+}
+
+
+
